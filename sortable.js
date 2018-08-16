@@ -1,27 +1,50 @@
 (function () {
   var Sortable = (function () {
-    /*
-      default options 정의
-      기본 함수 정의
-    */
+    function Sortable(container) {
+      if (!container) {
+        return false;
+      }
 
-    function Sortable() {
-      /*
-        init 호출
-      */
+      this._init(container);
     }
 
     Sortable.prototype = {
-      _init: function () {
-        /*
-          options 정리
-          event 호출
-        */
+      _init: function (container) {
+        this.container = container;
+
+        this._connectList();
+        this._event();
+      },
+      _connectList: function () {
+        const container = this.container;
+        this.items = Array.from(container.children);
       },
       _event: function () {
-        /*
-          sortable 관련 이벤트 정의 (위치 변경, 자동 스크롤)
-        */
+        const container = this.container;
+
+        container.addEventListener('mousedown', function (e) {
+          const row = e.target.closest('.row');
+          if (row === null)
+            return true;
+            
+          console.log('mousedown');
+        });
+        
+        container.addEventListener('mousemove', function (e) {
+          const row = e.target.closest('.row');
+          if (row === null)
+            return true;
+
+          console.log('mousemove');
+        });
+        
+        container.addEventListener('mouseup', function (e) {
+          const row = e.target.closest('.row');
+          if (row === null)
+            return true;
+
+          console.log('mouseup');
+        });
       }
     }
 

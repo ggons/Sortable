@@ -25,11 +25,9 @@
     }
   </style>
 </head>
-<body>
-  <div>
-    <div class="scrollContainer" style="height: 400px; overflow: auto;">
-      <div id="container"></div>
-    </div>
+<body><br/><br/><br/>
+  <div class="scrollContainer" style="height: 360px; overflow: auto;">
+    <div id="container"></div>
   </div>
   <script src="sortable.js"></script>
   <script>
@@ -38,9 +36,8 @@
       str += `<div class="row">${i}</div>`;
     }
     container.innerHTML = str;
-    var sortable = new Sortable({
-      container: document.getElementById('container'),
-    });
+
+    var sortable = new Sortable(document.getElementById('container'));
   </script>
 </body>
 </html>
