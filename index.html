@@ -38,7 +38,9 @@
       str += `<div class="row">${i}</div>`;
     }
     container.innerHTML = str;
-    var sortable = new Sortable();
+    var sortable = new Sortable({
+      container: document.getElementById('container'),
+    });
   </script>
 </body>
 </html>
