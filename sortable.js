@@ -45,30 +45,38 @@
       return document.documentElement.scrollTop || document.body.scrollTop;
     }
 
-    function Sortable(options) {
-      this._init(Object.assign(deepCopy(defaultOptions), options));
+    function Sortable(container, options) {
+      if (!container) {
+        return false;
+      }
+
+      this._init(container, Object.assign(deepCopy(defaultOptions), options));
     }
 
     Sortable.prototype = {
-      _init: function (options) {
+      _init: function (container, options) {
+        this.container = container;
         this.options = options;
         
         this._connectList();
         this._event();
       },
       _connectList: function () {
-        const { container } = this.options;
+        const { container } = this;
         this.items = Array.from(container.children);
       },
       _event: function () {
         const that = this;
         const { 
           container, 
+          options 
+        } = this;
+        const { 
           scrollContainer,
           childTagName, 
           handleQuery, 
           transitionDuration  // 위치 변경 시 item 이동 속도
-        } = this.options;
+        } = options;
 
         let items;                  // items
         let itemLen;                // item 길이

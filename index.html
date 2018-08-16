@@ -36,54 +36,19 @@
   <br />
   <div>
     <div class="scrollContainer" style="height: 400px; overflow: auto;">
-      <div id="container">
-        <div class="row">1</div>
-        <div class="row">2</div>
-        <div class="row">3</div>
-        <div class="row">4</div>
-        <div class="row">5</div>
-        <div class="row">6</div>
-        <div class="row">7</div>
-        <div class="row">8</div>
-        <div class="row">9</div>
-        <div class="row">10</div>
-        <div class="row">11</div>
-        <div class="row">12</div>
-        <div class="row">13</div>
-        <div class="row">14</div>
-        <div class="row">15</div>
-        <div class="row">16</div>
-        <div class="row">17</div>
-        <div class="row">18</div>
-        <div class="row">19</div>
-        <div class="row">20</div>
-        <div class="row">21</div>
-        <div class="row">22</div>
-        <div class="row">23</div>
-        <div class="row">24</div>
-        <div class="row">25</div>
-        <div class="row">26</div>
-        <div class="row">27</div>
-        <div class="row">28</div>
-        <div class="row">29</div>
-        <div class="row">30</div>
-        <div class="row">31</div>
-        <div class="row">32</div>
-        <div class="row">33</div>
-        <div class="row">34</div>
-        <div class="row">35</div>
-        <div class="row">36</div>
-        <div class="row">37</div>
-        <div class="row">38</div>
-        <div class="row">39</div>
-        <div class="row">40</div>
-      </div>
+      <div id="container"></div>
     </div>
   </div>
   <script src="prototype.js"></script>
   <script src="sortable.js"></script>
   <script>
-    var sortable = new Sortable({
+    let str = '';
+    for (let i = 0; i < 40; i++) {
+      str += `<div class="row">${i}</div>`;
+    }
+    container.innerHTML = str;
+
+    var sortable = new Sortable(document.getElementById('container'), {
       container: document.getElementById('container'),
       scrollContainer: document.querySelector('.scrollContainer'),
       childTagName: '.row',
